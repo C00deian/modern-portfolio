@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const links = ["Home", "Services", "Portfolio", "Blog", "Contact"];
+  const links = ["Home", "Services", "Blog", "Contact"];
 
   return (
     <nav className="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center">
@@ -19,7 +19,7 @@ const Navbar = () => {
       {/* Desktop Navigation */}
       <div className="hidden md:flex gap-10 bg-white/80 backdrop-blur-md px-8 py-3 rounded-full border border-gray-200 shadow-sm">
         {links.map((link) => (
-          <a key={link} href={`#${link.toLowerCase()}`} className="text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors">
+          <a key={link} href={`${link.toLowerCase()}`} className="text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors">
             {link}
           </a>
         ))}

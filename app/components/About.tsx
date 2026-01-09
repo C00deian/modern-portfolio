@@ -31,9 +31,9 @@ export const About = () => {
                             className="rounded overflow-hidden aspect-video bg-black"
                         >
                             <img
-                                src="https://static.wixstatic.com/media/554ccd_033fc628366b4f1ca0d57dab82b4f67e~mv2.jpg/v1/fill/w_580,h_494,fp_0.47_0.40,q_80,usm_0.66_1.00_0.01,enc_auto/Girl%20Hero%20Image%20Left.jpg"
+                                src="/me.jpeg"
                                 alt="Profile"
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover object-top"
                             />
                         </motion.div>
 

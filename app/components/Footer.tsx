@@ -1,10 +1,22 @@
 "use client";
 import { motion } from "framer-motion";
-import { Download, ArrowRight } from "lucide-react";
+import { Download, ArrowRight, Folder, X } from "lucide-react";
 import Container from "./Container";
 
 
+
+import { FolderGitIcon, } from "lucide-react";
+
+
 const Footer = () => {
+
+
+    const SOCIAL_LINKS = [
+        { name: "LinkedIn", url: "https://www.linkedin.com/in/ritik-kumar-96b845212/", icon: <Folder size={20} /> },
+        { name: "GitHub", url: "https://github.com/C00deian", icon: <FolderGitIcon size={20} /> },
+        { name: "Twitter", url: "#", icon: <X size={20} /> },
+    ];
+
     return (
         <footer className="bg-[rgb(39,39,39)] text-white overflow-hidden">
             <Container className="text-center flex flex-col items-center">
@@ -31,7 +43,8 @@ const Footer = () => {
 
                 {/* CTA Buttons */}
                 <div className="flex flex-wrap justify-center gap-6 mb-12">
-                    <button
+                    <a
+                        href="/contact"
                         className="
                bg-[#E64217] 
               text-black
@@ -49,9 +62,11 @@ const Footer = () => {
             "
                     >
                         Contact Me <ArrowRight size={18} />
-                    </button>
+                    </a>
 
-                    <button
+                    <a
+                        download={"ritik.pdf" }
+                        href="/resume/ritik.pdf"
                         className="
               border
               border-white/20
@@ -70,7 +85,7 @@ const Footer = () => {
             "
                     >
                         <Download size={18} /> Download CV
-                    </button>
+                    </a>
                 </div>
 
                 {/* Bottom Bar */}
@@ -92,13 +107,10 @@ const Footer = () => {
                 >
                     {/* Social Links */}
                     <div className="flex gap-8 text-white">
-                        {["LinkedIn", "GitHub", "Twitter"].map((social) => (
-                            <a
-                                key={social}
-                                href="#"
-                                className="uppercase tracking-widest hover:text-white transition-colors"
-                            >
-                                {social}
+                        {SOCIAL_LINKS.map((social) => (
+                            <a href={social.url} className="hover:scale-110 transition-transform" key={social.name}>
+                                {social.icon}
+                                <span className="sr-only">{social.name}</span>
                             </a>
                         ))}
                     </div>
