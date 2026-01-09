@@ -1,6 +1,8 @@
 "use client"
 
+import { Sparkle } from "lucide-react";
 import Container from "./Container";
+import WixSparkle from "./WixSparkle";
 
 
 

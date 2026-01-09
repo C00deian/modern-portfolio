@@ -1,29 +1,24 @@
+import type { Config } from "tailwindcss";
 
-const config = {
-  theme: {
-    extend: {
-      colors: {
-        background: '#1a1a1a', // Dark charcoal from video
-        accent: '#ff4d4d',     // The reddish-orange "Hello I'm" pill
-        secondary: '#f5f5f5',  // Off-white for section backgrounds
-      },
-      fontFamily: {
-        sans: ['Inter', 'sans-serif'], // Or 'Sora' for a more premium look
-      },
-    },
-  },
-}/** @type {import('tailwindcss').Config} */
-module.exports = {
+const config: Config = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       fontFamily: {
-        ubuntu: ["var(--font-ubuntu)"],
+        primary: ["var(--font-primary)", "sans-serif"],
+      },
+      colors: {
+        background: '#1a1a1a', 
+        accent: '#ff4d4d',     
+        secondary: '#f5f5f5',  
       },
     },
   },
   plugins: [],
 };
+
+export default config;

@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import States from "./components/States";
 import { About } from "./components/About";
 import Services from "./components/Services";
@@ -14,11 +13,13 @@ import Banner from "./components/Banner"
 
 export default function Home() {
   return (
-    <main className="bg-[#E0DFDB] min-h-screen font-sans selection:bg-[#ff4d4d] selection:text-white">
+    <>
+      <Navbar/>
+         <main className="bg-[#E0DFDB] min-h-screen selection:bg-[#ff4d4d] selection:text-white">
       {/* 1. Header & Hero Section */}
-      <Navbar />
+  
       <Hero />
-<Banner/>
+      <Banner />
       {/* 2. Stats Section (The "8 Years" / "110+ Projects" section) */}
       <States />
 
@@ -37,5 +38,8 @@ export default function Home() {
       {/* 7. Call to Action / Footer */}
       <Footer />
     </main>
+
+    </>
+ 
   );
 }
