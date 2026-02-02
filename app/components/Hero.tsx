@@ -10,7 +10,7 @@ const Hero = () => {
       {/* LEFT: IMAGE */}
       <div className="relative h-[60vh] md:h-screen w-full overflow-hidden bg-[rgb(39,39,39)] hover:cursor-pointer">
         <img
-          src="/Home.jpeg"
+          src="/hero.jpg"
           alt="Evelina Quinn"
           className="object-cover w-full h-full  grayscale hover:grayscale-0 transition-all duration-700"
         />

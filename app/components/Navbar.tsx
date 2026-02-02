@@ -1,51 +1,97 @@
 "use client";
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
+const links = [
+  { name: "Home", href: "/" },
+  { name: "Services", href: "/services" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "/contact" },
+];
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const links = ["Home", "Services", "Blog", "Contact"];
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="fixed top-0 w-full z-50 px-6 py-6 flex justify-between items-center">
-      {/* Logo Wrapper */}
-      <div className="bg-white p-2 rounded-lg shadow-sm border border-gray-200">
-        <div className="w-8 h-8 border-2 border-black rotate-45 flex items-center justify-center">
-          <div className="w-4 h-4 border border-black -rotate-45" />
-        </div>
+    <motion.nav
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      className={`fixed top-0 w-full z-50 transition-all ${
+        scrolled
+          ? "bg-white/80 backdrop-blur-xl shadow-lg"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+        {/* Logo */}
+        {/* <div className="text-xl font-extrabold tracking-tight">
+          <span className="text-accent">R</span>itik
+        </div> */}
+
+        {/* Desktop Nav */}
+
+<div className="hidden md:flex flex-1 justify-start">
+  <div className="flex items-center gap-12">
+    {links.map((link) => (
+      <a
+        key={link.name}
+        href={link.href}
+        className="group relative text-sm font-bold uppercase tracking-widest text-gray-500 transition-colors duration-300 hover:text-white"
+      >
+        {link.name}
+
+        {/* underline */}
+        <span className="absolute -bottom-2 left-0 h-0.5 w-0 bg-accent transition-all duration-300 group-hover:w-full" />
+      </a>
+    ))}
+  </div>
+</div>
+
+
+
+        {/* Mobile Toggle */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden p-3 rounded-full bg-white shadow-md"
+        >
+          {isOpen ? <X /> : <Menu />}
+        </button>
       </div>
 
-      {/* Desktop Navigation */}
-      <div className="hidden md:flex gap-10 bg-white/80 backdrop-blur-md px-8 py-3 rounded-full border border-gray-200 shadow-sm">
-        {links.map((link) => (
-          <a key={link} href={`${link.toLowerCase()}`} className="text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors">
-            {link}
-          </a>
-        ))}
-      </div>
-
-      {/* Mobile Toggle */}
-      <button onClick={() => setIsOpen(!isOpen)} className="md:hidden p-3 bg-white rounded-full shadow-md">
-        {isOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
-
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="absolute top-24 left-6 right-6 bg-white rounded-3xl p-8 shadow-2xl flex flex-col gap-6 md:hidden border border-gray-100"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.25 }}
+            className="md:hidden mx-6 mt-4 bg-white rounded-3xl p-8 shadow-2xl flex flex-col gap-6"
           >
             {links.map((link) => (
-              <a key={link} href="#" className="text-2xl font-bold" onClick={() => setIsOpen(false)}>{link}</a>
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="text-xl font-bold text-gray-800"
+              >
+                {link.name}
+              </a>
             ))}
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 };
 

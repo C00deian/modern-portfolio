@@ -14,8 +14,6 @@ const Container = ({ children, className = "" }: ContainerProps) => {
         px-6
         sm:px-8
         lg:px-16
-        py-4
-        sm:py-20
         ${className}
       `}
     >
