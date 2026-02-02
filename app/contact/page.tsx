@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Mail, MessageCircle, User, Phone, ArrowLeft, LocateIcon, LocateFixedIcon, LocationEditIcon } from 'lucide-react';
+import { FaPhone } from 'react-icons/fa';
 
 export default function Contact() {
   // Details update karein
@@ -11,12 +12,12 @@ export default function Contact() {
 
   return (
     <main className="min-h-screen bg-black text-white font-primary selection:bg-[#E64217]/30">
-      <div className="max-w-4xl mx-auto px-6 py-12 md:py-24">
+      <div className="max-w-4xl mx-auto px-6 py-12 md:py-24 space-y-12 md:space-y-16">
 
         {/* Back Button */}
         <Link
           href="/"
-          className="group inline-flex items-center gap-2 text-gray-400 hover:text-white mb-16 transition-all duration-300"
+          className="group inline-flex items-center gap-2 text-gray-400 hover:text-white transition-all duration-300"
         >
           <div className="p-2 rounded-full border border-white/10 group-hover:border-[#E64217] group-hover:bg-[#E64217]/10 transition-all">
             <ArrowLeft size={18} />
@@ -24,7 +25,7 @@ export default function Contact() {
           <span className="text-sm uppercase tracking-widest font-medium">Back to Home</span>
         </Link>
 
-        <header className="mb-16">
+        <header>
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
             Let's <span className="text-[#E64217]">Connect.</span>
           </h1>
@@ -47,11 +48,20 @@ export default function Contact() {
                 <p className="text-lg font-medium">Ritik Kumar</p>
               </div>
             </div>
+               <div className="flex items-center gap-5 p-6 rounded-4xl bg-white/5 border border-white/10">
+              <div className="bg-[#E64217]/20 p-4 rounded-2xl">
+                <FaPhone className="text-[#E64217]" size={24} />
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-tighter text-gray-500 font-bold mb-1">Contact</p>
+                <p className="text-lg font-medium">+91 6393654550</p>
+              </div>
+            </div>
 
             {/* Email - Clickable */}
             <a
               href={`mailto:${myEmail}`}
-              className="flex items-center gap-5 p-6 rounded-[2rem] bg-white/5 border border-white/10 hover:border-[#E64217]/40 transition-all group"
+              className="flex items-center gap-5 p-6 rounded-4xl bg-white/5 border border-white/10 hover:border-[#E64217]/40 transition-all group"
             >
               <div className="bg-[#E64217]/20 p-4 rounded-2xl group-hover:scale-110 transition-transform">
                 <Mail className="text-[#E64217]" size={24} />
@@ -63,7 +73,7 @@ export default function Contact() {
             </a>
 
             {/* Phone */}
-            <div className="flex items-center gap-5 p-6 rounded-[2rem] bg-white/5 border border-white/10">
+            <div className="flex items-center gap-5 p-6 rounded-4xl bg-white/5 border border-white/10">
               <div className="bg-[#E64217]/20 p-4 rounded-2xl">
                 <LocateFixedIcon className="text-[#E64217]" size={24} />
               </div>
@@ -101,7 +111,7 @@ export default function Contact() {
         </div>
 
         {/* Simple Footer Text */}
-        <p className="mt-24 text-center text-gray-600 text-sm tracking-widest uppercase">
+        <p className="text-center text-gray-600 text-sm tracking-widest uppercase">
           © 2026 Ritik Kumar • Coding with Passion
         </p>
       </div>
